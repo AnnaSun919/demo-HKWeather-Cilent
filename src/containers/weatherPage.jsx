@@ -50,16 +50,19 @@ const WeatherPage = () => {
       </div>
 
       {/* Stats row */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: '1rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: data.uvIndex != null ? '1fr 1fr' : '1fr', gap: 10, marginBottom: '1rem' }}>
         <div style={{ background: '#f7f7f7', borderRadius: 8, padding: '1rem' }}>
           <p style={{ fontSize: 12, color: '#888', marginBottom: 6 }}>Humidity</p>
           <p style={{ fontSize: 22, fontWeight: 500 }}>{data.humidity}%</p>
         </div>
-        <div style={{ background: '#f7f7f7', borderRadius: 8, padding: '1rem' }}>
-          <p style={{ fontSize: 12, color: '#888', marginBottom: 6 }}>UV Index</p>
-          <p style={{ fontSize: 22, fontWeight: 500 }}>{data.uvIndex?.value}</p>
-          <p style={{ fontSize: 12, color: '#888', marginTop: 2 }}>{data.uvIndex?.desc}</p>
-        </div>
+
+        {data.uvIndex != null && (
+          <div style={{ background: '#f7f7f7', borderRadius: 8, padding: '1rem' }}>
+            <p style={{ fontSize: 12, color: '#888', marginBottom: 6 }}>UV Index</p>
+            <p style={{ fontSize: 22, fontWeight: 500 }}>{data.uvIndex?.value}</p>
+            <p style={{ fontSize: 12, color: '#888', marginTop: 2 }}>{data.uvIndex?.desc}</p>
+          </div>
+        )}
       </div>
     </div>
   );
